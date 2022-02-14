@@ -3,7 +3,7 @@
 * Date Created: Feb 09, 2022
 * 
 * Last Edited by: NA
-* Last Edited: Feb 09, 2022
+* Last Edited: Feb 14, 2022
 * 
 * Description: Cam follows projectile
 ****/
@@ -14,6 +14,11 @@ using UnityEngine;
 public class FollowCam : MonoBehaviour
 {
     static public GameObject POI; //static point of interest
+
+    [Header("Set in Inspector")]
+    public float easing = 0.05f; //amount of ease
+    public Vector2 minXY = Vector2.zero;
+
 
     public float camZ; //desired Z position of cam
 
@@ -27,8 +32,15 @@ public class FollowCam : MonoBehaviour
         if (POI == null) return;
 
         Vector3 destination = POI.transform.position;
+
+        destination.x = Mathf.Max(minXY.x, destination.x);
+        destination.y = Mathf.Max(minXY.y, destination.y);
+
+        destination = Vector3.Lerp(transform.position, destination, easing); //interpolate from current cam pos towards destination
         destination.z = camZ;
         transform.position = destination;
+
+        Camera.main.orthographicSize = destination.y + 10;
     }
 
     // Start is called before the first frame update
