@@ -45,6 +45,13 @@ public class CloudCrafter : MonoBehaviour
             float scaleVal = Mathf.Lerp(cloudScaleMin, cloudScaleMax, scaleU);
 
             cPos.y = Mathf.Lerp(cloudPositionMin.y, cPos.y, scaleU); // smaller clouds with smaller scale closer to the ground
+            cPos.z = 100 - 90 * scaleU;
+
+            cloud.transform.position = cPos;
+            cloud.transform.localScale = Vector3.one * scaleVal;
+
+            cloud.transform.SetParent(anchor.transform);
+            cloudInstances[i] = cloud;
         }
     }
 
@@ -57,6 +64,16 @@ public class CloudCrafter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach(GameObject cloud in cloudInstances)
+        {
+            float scaleVal = cloud.transform.localScale.x;
+            Vector3 cPos = cloud.transform.position;
+            cPos.x -= scaleVal * Time.deltaTime * cloudSpeedMultiplier;
+            if(cPos.x <= cloudPositionMin.x)
+            {
+                cPos.x = cloudPositionMax.x;
+            }
+            cloud.transform.position = cPos;
+        }
     }
 }

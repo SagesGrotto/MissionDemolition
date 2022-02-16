@@ -390,6 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299513805}
+  - component: {fileID: 299513806}
   m_Layer: 0
   m_Name: CloudAnchor
   m_TagString: Untagged
@@ -411,6 +412,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299513806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299513804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6b0d206ae360c43bb76806ad501927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfClouds: 40
+  cloudPrefab: {fileID: 127371896185108689, guid: 91fd97631276f9648bfac3f568d482f1, type: 3}
+  cloudPositionMin: {x: -50, y: -5, z: 10}
+  cloudPositionMax: {x: 150, y: 100, z: 10}
+  cloudScaleMin: 1
+  cloudScaleMax: 3
+  cloudSpeedMultiplier: 0.5
 --- !u!1 &373073319
 GameObject:
   m_ObjectHideFlags: 0
