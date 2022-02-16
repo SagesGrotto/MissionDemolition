@@ -15,6 +15,7 @@ using UnityEngine;
 public class Slingshot : MonoBehaviour
 {
     /**** VARIABLES ****/
+    static private Slingshot S;
     [Header("Set in Inspector")]
     public GameObject prefabProjectile;
 
@@ -25,6 +26,22 @@ public class Slingshot : MonoBehaviour
     public bool aimingMode;//is player aiming
     public Rigidbody projectileRB;//rigidbody of projec
     public float velocityMultiplier = 8f;
+
+    static public Vector3 Launch_Pos
+    {
+        get{
+            if (S == null) return Vector3.zero;
+            return S.launchPos;
+        }
+    }
+
+ /*   static public Vector3 VEL_MULT
+    {
+        get
+        {
+            return Slingshot.velocityMultiplier;
+        }
+    }*/
 
     private void Awake()
     {

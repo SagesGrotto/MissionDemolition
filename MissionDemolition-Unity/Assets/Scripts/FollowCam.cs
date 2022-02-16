@@ -3,7 +3,7 @@
 * Date Created: Feb 09, 2022
 * 
 * Last Edited by: NA
-* Last Edited: Feb 14, 2022
+* Last Edited: Feb 16, 2022
 * 
 * Description: Cam follows projectile
 ****/
@@ -29,9 +29,27 @@ public class FollowCam : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (POI == null) return;
+        //if (POI == null) return;
 
-        Vector3 destination = POI.transform.position;
+        //Vector3 destination = POI.transform.position;
+
+        Vector3 destination; //destination of POI
+        if(POI == null)
+        {
+            destination = Vector3.zero;
+        }
+        else
+        {
+            destination = POI.transform.position;
+            if(POI.tag == "Projectile")
+            {
+                if (POI.GetComponent<Rigidbody>().IsSleeping())
+                {
+                    POI = null;
+                }
+            }//end if(POI.tag == "Projectile")
+        }
+
 
         destination.x = Mathf.Max(minXY.x, destination.x);
         destination.y = Mathf.Max(minXY.y, destination.y);
@@ -52,6 +70,9 @@ public class FollowCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            POI = null;
+        }
     }
 }
