@@ -42,7 +42,7 @@ public class MissionDemolition : MonoBehaviour
     void Start()
     {
         S = this;
-
+        
         level = 0;
         levelMax = castles.Length;
         StartLevel();
@@ -88,6 +88,7 @@ public class MissionDemolition : MonoBehaviour
 
         if ((mode == GameMode.playing) && Goal.goalMet)
         {
+            
             mode = GameMode.levelEnd;
             SwitchView("Show Both");
             Invoke("NextLevel", 2f);

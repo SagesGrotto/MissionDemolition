@@ -2828,6 +2828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDist: 0.1
+  lineWidth: {x: 0, y: 0.3}
 --- !u!120 &1867221881
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2879,7 +2880,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.15277863
         inSlope: 0
         outSlope: 0
         tangentMode: 0
